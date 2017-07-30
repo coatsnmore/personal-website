@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {EventNotification} from './EventNotification'
+import { EventNotification } from './EventNotification'
 
 
 @Component({
@@ -10,11 +10,15 @@ import {EventNotification} from './EventNotification'
 
 export class NotificationComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-    let eventNotification = new EventNotification();
-    eventNotification.meow("Best Friend");
+  constructor() {
   }
 
+  ngOnInit() {
+
+  }
+
+  notify(name:string) {
+    let eventNotification = new EventNotification();
+    eventNotification.meow(name);
+  }
 }

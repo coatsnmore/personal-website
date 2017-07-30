@@ -4,11 +4,11 @@
 			the top-level browsing context viewport, so therefore can be displayed even the user has switched tabs or moved to a different
 			app. The API is designed to be compatible with existing notification systems across different platforms.</p>
 		<div>
-			<!--<input v-model="name" placeholder="First and Last Name" />-->
+			<input [(ngModel)]="name" placeholder="First and Last Name" />
 			<!--<p>Name: {{name}}</p>-->
 		</div>
     <br>
 		<div>
-			<!--<button v-on:click="meow">Notify Me!</button>-->
+			<button (click)="notify(name)" class="button-primary">Notify Me!</button>
 		</div>
 	</div>

@@ -1,6 +1,6 @@
 import Notes from './Notes';
 
-class Synth {
+export class Synth {
 
     constructor() {
         this.notes = Notes.all();
