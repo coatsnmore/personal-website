@@ -1,0 +1,16 @@
+<div>
+  <h2> <i class="fa fa-globe" aria-hidden="true"></i> Map</h2>
+
+  <label for="lat">Latitude</label>
+  <input id="lat" [(ngModel)]="lat" placeholder="Latitude" type="number" />
+
+  <br><br>
+
+  <label for="lng">Longitude</label>
+  <input [(ngModel)]="lng" placeholder="Longtitude" type="number" />
+
+  <br><br>
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
+</div>

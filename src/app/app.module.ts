@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
@@ -11,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { WebglComponent } from './webgl/webgl.component';
 import { NotificationComponent } from './notification/notification.component';
 import { AudioComponent } from './audio/audio.component';
+import { MapComponent } from './map/map.component';
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent },
@@ -29,6 +31,10 @@ const appRoutes: Routes = [
   {
     path: 'audio',
     component: AudioComponent
+  },
+  {
+    path: 'map',
+    component: MapComponent
   },
   {
     path: 'home',
@@ -50,7 +56,8 @@ const appRoutes: Routes = [
     HomeComponent,
     WebglComponent,
     NotificationComponent,
-    AudioComponent
+    AudioComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +65,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: false } // <-- debugging purposes only
-    )
+    ),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBoCoDi_hdFHUK1wERvz3dqlZ5JaOrElfI'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
