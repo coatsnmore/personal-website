@@ -13,7 +13,7 @@ export class WebglComponent implements OnInit {
   }
 
   ngOnInit() {
-    var scene = new Scene('scene', 600, 300)
+    var scene = new Scene('scene', 800, 600)
     scene.tick();
   }
 }
