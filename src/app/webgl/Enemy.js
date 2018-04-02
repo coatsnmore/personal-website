@@ -4,7 +4,7 @@ export class Enemy {
         this.world = world;
         this.size = size;
         this.graphics(x, y);
-        this.body(x, y); 
+        this.body(x, y);
         this.speed = 100;
         this.turnSpeed = 1;
         this.bullets = {
@@ -69,14 +69,14 @@ export class Enemy {
 
     body(x, y) {
         this.body = new p2.Body({
-            mass: 1,
-            angularVelocity: 1,
-            damping: 0,
-            angularDamping: 0.2,
+            mass: 0.1,
+            angularVelocity: 0.6,
+            damping: 0.8,
+            angularDamping: 0,
             position: [x, y]
         });
 
-// console.log(`this.world: ${this.world}`);
+        // console.log(`this.world: ${this.world}`);
         this.world.getBodies().enemies.push(this.body.id);
 
         this.shape = new p2.Box({
@@ -101,8 +101,8 @@ export class Enemy {
         // tanθ=y/x , so tan−1y/x=θ
 
         // var turnAngleTowardPlayer = Math.atan2(player.getGraphics().y, this.graphics.x);
-        if(this.adjustToPlayer){
-            if(this.turnDirection){
+        if (this.adjustToPlayer) {
+            if (this.turnDirection) {
                 this.body.angularVelocity = 1;
             } else {
                 this.body.angularVelocity = -1;
@@ -110,32 +110,6 @@ export class Enemy {
             this.turnDirection = !this.turnDirection;
             this.adjustToPlayer = false;
         }
-
-        // if (this.adjustToPlayer) {
-        //     let playerRight = 
-        //     let right = 
-
-        //     if ((player.getGraphics().x - this.graphics.x) > 0) {
-        //         this.body.angularVelocity = -1 * this.turnSpeed;
-        //     } else {
-        //         this.body.angularVelocity = 1 * this.turnSpeed;
-        //     }
-        //     this.adjustToPlayer = false;
-
-        // } else {
-        //     this.body.angularVelocity = this.body.angularVelocity * 0.75;
-        // }
-
-
-        //enemy angles
-        // this.body.angularVelocity = -1 * this.turnSpeed;
-        // if (controls.left) {
-        //     this.body.angularVelocity = -1 * this.turnSpeed;
-        // } else if (controls.right) {
-        //     this.body.angularVelocity = this.turnSpeed;
-        // } else {
-        //     this.body.angularVelocity = 0;
-        // }
 
         // console.log('this.body.angularVelocity: ' + this.body.angularVelocity);
 
@@ -150,20 +124,40 @@ export class Enemy {
         //     this.engine.alpha = 0;
         // }
 
-        // warp player on boundaries
+        // warp on boundaries
         this.warp(sceneWidth, sceneHeight);
 
-        // update player graphics
+        // update graphics
         this.graphics.x = this.body.position[0];
         this.graphics.y = this.body.position[1];
         this.graphics.rotation = this.body.angle;
 
-        // update bullets graphics
-        for (var j = 0; j < this.bullets.collection.length; j++) {
-            var bullet = this.bullets.collection[j];
+        // update bullets
+        this.bullets.collection.forEach(bullet => {
+            // hit, then die
+            if(world.getBodies().collisions.enemyBullets.includes(bullet.body.id)){
+                bullet.graphics.alpha=0;
+                // this.graphics.remove(bullet.graphics);
+            }
+
+            // update graphics
             bullet.graphics.x = bullet.body.position[0];
             bullet.graphics.y = bullet.body.position[1];
-        }
+        });
+
+        // update bullets graphics
+        // for (let j = 0; j < this.bullets.collection.length; j++) {
+        //     let bullet = this.bullets.collection[j];
+
+        //     for (let k = 0; k < world.getBodies().collisions.enemyBullets.length; k++ ){
+        //         let id = world.getBodies().collisions.enemyBullets[k];
+        //     }
+        //     // kill hit bullets
+        //     // if( world.getBodies().collisions.enemyBullets.includes(bullet.body.id)){
+        //     //     // bullet.graphics.alpha = 0;
+        //     // }
+          
+        // }
     }
 
     warp(sceneWidth, sceneHeight) {

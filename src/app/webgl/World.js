@@ -44,13 +44,13 @@ class World {
                
                 // enemy bullet hit player
                 if (this.bodies.enemyBullets.includes(e.bodyB.id)) {
-                    this.bodies.collisions.enemyBullets = e.bodyB.id;
+                    this.bodies.collisions.enemyBullets.push(e.bodyB.id);
                     this.bodies.collisions.player = this.bodies.player;
                 }
 
                 // enemy hit player
                 if (this.bodies.enemies.includes(e.bodyB.id)) {
-                    this.bodies.collisions.enemies = e.bodyB.id;
+                    this.bodies.collisions.enemies.push(e.bodyB.id);
                     this.bodies.collisions.player = this.bodies.player;
                 }
 
@@ -59,13 +59,13 @@ class World {
 
                 // enemy bullet hit player
                 if (this.bodies.enemyBullets.includes(e.bodyA.id)) {
-                    this.bodies.collisions.enemyBullets = e.bodyA.id;
+                    this.bodies.collisions.enemyBullets.push(e.bodyA.id);
                     this.bodies.collisions.player = this.bodies.player;
                 }
 
                 // enemy hit player
                 if (this.bodies.enemies.includes(e.bodyA.id)) {
-                    this.bodies.collisions.enemies = e.bodyA.id;
+                    this.bodies.collisions.enemies.push(e.bodyA.id);
                     this.bodies.collisions.player = this.bodies.player;
                 }
             }

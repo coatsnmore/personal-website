@@ -83,6 +83,7 @@ export class Scene {
         // update positions of objects in scene
         let playerOkay = this.player.update(this.controls.getState(), this.width, this.height, this.stage, this.world);
 
+        // game end conditions
         if (!playerOkay){ 
             this.restartScreen();
         }

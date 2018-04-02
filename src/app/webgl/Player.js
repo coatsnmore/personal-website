@@ -65,9 +65,9 @@ export class Player {
 
     body(x, y) {
         this.body = new p2.Body({
-            mass: 1,
+            mass: 0.1,
             angularVelocity: 0,
-            damping: 0,
+            damping: 0.8,
             angularDamping: 0,
             position: [x, y]
         });
@@ -141,10 +141,6 @@ export class Player {
         }
         
         return true;
-    }
-
-    hit(){
-        console.log(`player hit!`);
     }
 
     getGraphics(){
