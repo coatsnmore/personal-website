@@ -21,7 +21,7 @@ class Gamepad {
         for (var i = 0; i < gamepads.length; i++) {
             var gp = gamepads[i];
             if (gp) {
-                console.log()
+                // console.log()
                 this.state.up = gp.buttons[12].pressed ? true : false;
                 this.state.down = gp.buttons[13].pressed ? true : false;
                 this.state.right = gp.buttons[15].pressed ? true : false;
