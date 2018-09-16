@@ -5,14 +5,32 @@
   <title>NickCoats</title>
   <base href="/">
 
+  <script>
+  window.onload = function() {
+  Particles.init({
+    selector: '.background',
+    connectParticles: true,
+    sizeVariations: '4',
+    maxParticles: 200,
+    speed: '0.5',
+    // color: ['#6C8699', '#000000'],
+    color: '#000000',
+    minDistance: 120,
+    responsive: null
+  });
+};
+</script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <script src="https://use.fontawesome.com/1003ba34b7.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.4/pixi.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p2.js/0.7.1/p2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
 
 </head>
 <body>
+  <canvas class="background"></canvas>
   <app-root></app-root>
 </body>
 </html>
